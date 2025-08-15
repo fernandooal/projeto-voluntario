@@ -1,5 +1,14 @@
 services:
-    laravel:
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - .:/var/www
+            - ./server/nginx.conf:/etc/nginx/conf.d/default.conf
+
+    php:
         build:
             dockerfile: Dockerfile
         container_name: php
